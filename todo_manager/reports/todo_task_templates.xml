@@ -1,0 +1,53 @@
+<odoo>
+    <template id="report_todo_task">
+        <t t-call="web.external_layout">
+            <main>
+                <div class="page">
+                    <h2 class="text-center">To-Do Task Report</h2>
+                    <t t-foreach="docs" t-as="task">
+                        <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 15px;">
+                            <h3><strong>Task:</strong> <t t-esc="task.name"/></h3>
+                            <p><strong>Description:</strong> <t t-esc="task.description"/></p>
+                            <p><strong>Assigned To:</strong> <t t-esc="task.user_id.name"/></p>
+                            <p><strong>Category:</strong> <t t-esc="task.category_id.name or 'N/A'"/></p>
+                            <p><strong>Priority:</strong> <t t-esc="task.priority_id.name or 'N/A'"/></p>
+                            <p><strong>Status:</strong> <t t-esc="task.status"/></p>
+                            <t t-if="task.tag_ids">
+                                <p><strong>Tags:</strong>
+                                    <t t-foreach="task.tag_ids" t-as="tag">
+                                        <span style="color: black; padding: 3px 6px; border-radius: 3px;">
+                                            <t t-esc="tag.name"/>
+                                        </span>
+                                    </t>
+                                </p>
+                            </t>
+                            <t t-if="task.subtask_ids">
+                                <h4 style="margin-top: 10px;">Subtasks:</h4>
+                                <table style="width: 100%; border-collapse: collapse; margin-top: 5px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="padding: 5px; border: 1px solid #ddd;">Subtask Name</th>
+                                            <th style="padding: 5px; border: 1px solid #ddd;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="task.subtask_ids" t-as="subtask">
+                                            <tr>
+                                                <td style="padding: 5px; border: 1px solid #ddd;">
+                                                    <t t-esc="subtask.name"/>
+                                                </td>
+                                                <td style="padding: 5px; border: 1px solid #ddd;">
+                                                    <t t-esc="subtask.status"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </main>
+        </t>
+    </template>
+</odoo>

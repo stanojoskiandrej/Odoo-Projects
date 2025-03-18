@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="todo_menu" name="To-Do Manager" sequence="10"/>
+    <menuitem id="todo_task_menu" name="Tasks" parent="todo_menu" action="todo_task_action"/>
+    <menuitem id="todo_category_menu" name="Categories" parent="todo_menu" action="todo_category_action"/>
+    <menuitem id="todo_priority_menu" name="Priorities" parent="todo_menu" action="todo_priority_action"/>
+    <menuitem id="todo_tag_menu" name="Tags" parent="todo_menu" action="todo_tag_action"/>
+</odoo>
